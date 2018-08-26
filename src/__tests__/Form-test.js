@@ -8,9 +8,10 @@ import renderer from 'react-test-renderer';
 
 //we are testing form component
     describe('Form Component', () => {
-    it('matches the snapshot', () => {
-       const tree = renderer.create(<Form/>).toJSON()
-    });
+    // it('matches the snapshot', () => {
+    //    const tree = renderer.create(<Form/>).toJSON();
+    //     expect(tree).toMatchSnapshot();
+    // });
 
     it('should render without throwing an error', () => {
         expect (shallow(<Form/>).find('form.input').exists()).toBe(true)
@@ -48,6 +49,8 @@ import renderer from 'react-test-renderer';
         const submitBtn = wrapper.find('RaisedButton.clearBtn')
         submitBtn.simulate('click')
     });
+
+
 
     //Check is no data then Add should be disabled
     // it('should fail if no data from fields', () => {
