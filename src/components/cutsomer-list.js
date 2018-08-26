@@ -33,8 +33,27 @@ class CustomerList extends Component {
 
     render() {
 
+        let sortedData = JSON.parse(JSON.stringify(this.state.data));
+        sortedData = JSON.parse(JSON.stringify(sortedData.map((list, i)=>{return{...list, hobbies:list.hobbies.sort()}})));
+
+        console.log('SortedData :',sortedData);
+
+
         let hobbies = this.state.data.map((list,i)=> <tr>{list.hobbies.sort().toString()}</tr>);
-        console.log(hobbies);
+        console.log('hobbies :',hobbies);
+
+        const myArray = hobbies;
+        const test = myArray.forEach((element, index, array) => {
+            var hobbyitem = element.props.children;
+            console.log('hobbyitem: ',hobbyitem)
+
+            let isEquals = (a,b) => JSON.stringify(a) === JSON.stringify(b);
+            console.log(isEquals(hobbyitem))
+
+            //No hobbies are similar so console log false, fater matching the string
+
+        });
+
         // let similarHobbies = hobbies.concat((arr, hobbies) => [...arr, ...hobbies],[])
         // console.log(similarHobbies);
 
@@ -46,32 +65,13 @@ class CustomerList extends Component {
         //     }
         // }
 
-        let sortedData = JSON.parse(JSON.stringify(this.state.data));
-        sortedData = JSON.parse(JSON.stringify(sortedData.map((list, i)=>{return{...list, hobbies:list.hobbies.sort()}})));
-
-        console.log('SortedData :',sortedData);
-
-        const myArray = hobbies;
-        myArray.forEach((element, index, array) => {
-            var hobbyitem = element.props.children;
-            console.log(hobbyitem)
-
-            let isEquals = (a,b) => JSON.stringify(a) === JSON.stringify(b);
-            console.log(isEquals(sortedData,hobbyitem))
-
-            // As there are no common hobbies from the list
-        });
-
-        //hobbies = state.data.map()
-
-
 
         return(
            <table>
                <tr>
                    <th>List of all Hobbies</th>
                </tr>
-               {hobbies}
+               <td>{hobbies}</td>
            </table>
         )
     }
