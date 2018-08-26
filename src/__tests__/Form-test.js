@@ -8,9 +8,9 @@ import renderer from 'react-test-renderer';
 
 //we are testing form component
     describe('Form Component', () => {
-    // it('matches the snapshot', () => {
-    //    const tree = renderer.create(<Form/>).toJSON()
-    // });
+    it('matches the snapshot', () => {
+       const tree = renderer.create(<Form/>).toJSON()
+    });
 
     it('should render without throwing an error', () => {
         expect (shallow(<Form/>).find('form.input').exists()).toBe(true)

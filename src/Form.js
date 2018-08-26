@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 export default class Form extends React.Component {
   state = {
@@ -101,45 +102,47 @@ export default class Form extends React.Component {
           hobbies.length > 0;
 
     return (
-      <form className='input'>
-        <TextField
-          name="name"
-          floatingLabelText="Name"
-          value={this.state.name}
-          onChange={e => this.change(e)}
-          errorText={this.state.firstNameError}
-          floatingLabelFixed
-        />
-        <br />
-        <TextField
-          name="address"
-          floatingLabelText="Address"
-          value={this.state.address}
-          onChange={e => this.change(e)}
-          errorText={this.state.addressError}
-          floatingLabelFixed
-        />
-        <br />
-        <TextField
-          name="phone"
-          floatingLabelText="Phone"
-          value={this.state.phone}
-          onChange={e => this.change(e)}
-          errorText={this.state.phoneError}
-          floatingLabelFixed
-        />
-        <br />
-          <TextField
-              name="hobbies"
-              floatingLabelText="Hobbies"
-              value={this.state.hobbies}
+        <MuiThemeProvider>
+          <form className='input'>
+            <TextField
+              name="name"
+              floatingLabelText="Name"
+              value={this.state.name}
               onChange={e => this.change(e)}
+              errorText={this.state.firstNameError}
               floatingLabelFixed
-          />
-          <br />
-          <RaisedButton className="submitBtn" disabled={!enabled} label="Add" onClick={e => this.onSubmit(e)} primary />
-          <RaisedButton className="clearBtn" label="Clear" onClick={e => this.onClear(e)} primary />
-      </form>
+            />
+            <br />
+            <TextField
+              name="address"
+              floatingLabelText="Address"
+              value={this.state.address}
+              onChange={e => this.change(e)}
+              errorText={this.state.addressError}
+              floatingLabelFixed
+            />
+            <br />
+            <TextField
+              name="phone"
+              floatingLabelText="Phone"
+              value={this.state.phone}
+              onChange={e => this.change(e)}
+              errorText={this.state.phoneError}
+              floatingLabelFixed
+            />
+            <br />
+              <TextField
+                  name="hobbies"
+                  floatingLabelText="Hobbies"
+                  value={this.state.hobbies}
+                  onChange={e => this.change(e)}
+                  floatingLabelFixed
+              />
+              <br />
+              <RaisedButton className="submitBtn" disabled={!enabled} label="Add" onClick={e => this.onSubmit(e)} primary />
+              <RaisedButton className="clearBtn" label="Clear" onClick={e => this.onClear(e)} primary />
+          </form>
+        </MuiThemeProvider>
     );
   }
 }
