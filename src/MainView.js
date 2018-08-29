@@ -18,7 +18,8 @@ injectTapEventPlugin();
 const invertDirection = {
     asc : 'desc',
     desc: 'asc'
-}
+};
+
 
 class MainView extends Component {
     state = {

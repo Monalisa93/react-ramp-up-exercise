@@ -3,8 +3,8 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import customerActions from '../actions/index';
 import { fetchCustomers } from '../actions/index';
-import isEqual from 'lodash/isEqual';
 import axios from 'axios';
+import ErrorBoundary from './ErrorBoundary'
 
 const JSON = require('circular-json');
 
@@ -38,42 +38,31 @@ class CustomerList extends Component {
 
         console.log('SortedData :',sortedData);
 
+        let hobbies = sortedData.map((hobbies,i) => {return hobbies.hobbies});
+        console.log('hobbies :', hobbies);
 
-        let hobbies = this.state.data.map((list,i)=> <tr>{list.hobbies.sort().toString()}</tr>);
-        console.log('hobbies :',hobbies);
-
-        const myArray = hobbies;
-        const test = myArray.forEach((element, index, array) => {
-            var hobbyitem = element.props.children;
-            console.log('hobbyitem: ',hobbyitem)
-
-            let isEquals = (a,b) => JSON.stringify(a) === JSON.stringify(b);
-            console.log(isEquals(hobbyitem))
-
-            //No hobbies are similar so console log false, fater matching the string
-
-        });
-
-        // let similarHobbies = hobbies.concat((arr, hobbies) => [...arr, ...hobbies],[])
-        // console.log(similarHobbies);
-
-        // hobbies.forEach(myFunc);
-        //
-        // function myFunc(item, index) {
-        //     for (var key in item){
-        //         console.log(item[key])
-        //     }
-        // }
+        let similarHobbies = hobbies.filter(p => JSON.stringify(p.hobbies) === JSON.stringify(hobbies.sort()));
+        console.log('similarHobbies :',similarHobbies);
 
 
-        return(
-           <table>
-               <tr>
-                   <th>List of all Hobbies</th>
-               </tr>
-               <td>{hobbies}</td>
-           </table>
-        )
+        if (similarHobbies.length !== 0) {
+            return(
+                <ErrorBoundary>
+                    <table>
+                        <tr>
+                            <th>List of Similar Hobbies</th>
+                        </tr>
+                        {similarHobbies}
+                    </table>
+                </ErrorBoundary>
+            )
+        } else {
+            return(
+                <h1>
+                    No Common Hobbies to show!!
+                </h1>
+            )
+        }
     }
 }
 
