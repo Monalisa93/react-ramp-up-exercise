@@ -8,6 +8,7 @@ import {
       TableRowColumn
 } from "material-ui/Table";
 import orderBy from 'lodash/orderBy';
+import ErrorBoundary from './components/ErrorBoundary';
 
 
 const row = (x, i, header) =>

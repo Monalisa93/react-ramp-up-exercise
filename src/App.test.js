@@ -9,12 +9,8 @@ it('renders without crashing', () => {
     shallow(<App/>);
 });
 
-// test('App renders correctly', () => {
-//     const snap = renderer.create(
-//         <Router>
-//             <App/>
-//         </Router>
-//     ).toJSON();
-//     expect(snap).toMatchSnapshot();
-// })
+test('App matches snapshot', () => {
+    const snap = renderer.create(<App/>).toJSON();
+    expect(snap).toMatchSnapshot();
+});
 

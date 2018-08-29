@@ -6,7 +6,7 @@ import axios from 'axios';
 import orderBy from 'lodash/orderBy';
 import isEqual from 'lodash/isEqual';
 import RaisedButton from "material-ui/RaisedButton";
-
+import ErrorBoundary from './components/ErrorBoundary';
 
 import "./App.css";
 import Form from "./Form";
@@ -62,6 +62,8 @@ class MainView extends Component {
                                 data: [...this.state.data, submission]
                             })}
                     />
+
+                    <ErrorBoundary>
                     <Table
                         data={orderBy(this.state.data, this.state.columnToSort, this.state.sortDirection)}
                         handleSort={this.handleSort}
@@ -84,6 +86,7 @@ class MainView extends Component {
                             }
                         ]}
                     />
+                    </ErrorBoundary>
                     <RaisedButton label="Sort" onClick={e => this.handleClick(e)} primary />
                 </div>
             </MuiThemeProvider>
