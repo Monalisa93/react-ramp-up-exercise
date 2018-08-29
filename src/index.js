@@ -7,11 +7,14 @@ import {createStore, applyMiddleware} from 'redux';
 import allReducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import reduxThunk from 'redux-thunk';
+import ErrorBoundary from './components/ErrorBoundary'
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(allReducers)}>
-    <App />
+        <ErrorBoundary>
+            <App />
+        </ErrorBoundary>
     </Provider>, document.getElementById('root'));
 registerServiceWorker();

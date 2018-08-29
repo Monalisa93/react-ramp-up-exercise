@@ -7,10 +7,12 @@ import {
       TableRow,
       TableRowColumn
 } from "material-ui/Table";
+import ErrorBoundary from './components/ErrorBoundary'
 
 
 
 const row = (x, i, header) =>
+    //Rendering each row of the table
     <TableRow key={`tr-${i}`} >
         {header.map((y, k) =>
             <TableRowColumn key={`trc-${k}`}>
@@ -21,6 +23,7 @@ const row = (x, i, header) =>
 
 
 export default ({ data, header, handleSort }) =>
+
     <Table>
         <TableHeader>
             <TableRow>

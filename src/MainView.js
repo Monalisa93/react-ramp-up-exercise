@@ -64,7 +64,7 @@ class MainView extends Component {
                             })}
                     />
 
-                    <ErrorBoundary>
+                    <ErrorBoundary render={() => <h1>Oops! Something went wrong</h1>}>
                     <Table
                         data={orderBy(this.state.data, this.state.columnToSort, this.state.sortDirection)}
                         handleSort={this.handleSort}
@@ -88,7 +88,7 @@ class MainView extends Component {
                         ]}
                     />
                     </ErrorBoundary>
-                    <RaisedButton label="Sort" onClick={e => this.handleClick(e)} primary />
+                    <RaisedButton label="Similar Hobbies" onClick={e => this.handleClick(e)} primary />
                 </div>
             </MuiThemeProvider>
         );
