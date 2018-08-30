@@ -66,7 +66,7 @@ class MainView extends Component {
 
                     <ErrorBoundary render={() => <h1>Oops! Something went wrong</h1>}>
                     <Table
-                        data={orderBy(this.state.data, this.state.columnToSort, this.state.sortDirection)}
+                        //data={orderBy(this.state.data, this.state.columnToSort, this.state.sortDirection)}
                         handleSort={this.handleSort}
                         header={[
                             {
