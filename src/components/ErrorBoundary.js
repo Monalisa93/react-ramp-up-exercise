@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 
 class ErrorBoundary extends React.Component {
     static propTypes = {
-      children: PropTypes.oneOfType([
-          PropTypes.node,
-          PropTypes.arrayOf(PropTypes.node)
-      ]).isRequired
+        children: PropTypes.oneOfType([
+            PropTypes.node,
+            PropTypes.arrayOf(PropTypes.node)
+        ]).isRequired
     };
 
     constructor(props){
